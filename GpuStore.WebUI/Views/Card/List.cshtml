@@ -1,0 +1,17 @@
+﻿@using GpuStore.Domain.Entities
+@using GpuStore.WebUI.Models
+@using GpuStore.WebUI.HtmlHelpers
+@model CardsListViewModel
+
+@{
+    ViewBag.Title = "Товары";
+}
+
+@foreach (var p in @Model.Cards)
+{
+   @Html.Partial("CardSummary", p)
+}
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, manufacturer = Model.CurrentManufacturer }))
+</div>
